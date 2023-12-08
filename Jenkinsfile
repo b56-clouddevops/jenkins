@@ -4,6 +4,7 @@ pipeline {
     agent any 
     environment {
         ENV_URL = "pipeline.google.com"                         // Pipeline variables ( Global )
+        SSH_CRED = credentials('SSH_CRED')
     }
     stages {
         stage('Name of the stage - 1') {
