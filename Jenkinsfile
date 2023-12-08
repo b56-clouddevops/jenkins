@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Name of the stage - 2') {
             environment {
-                ENV_URL = "stage.google.com"                    // task variable
+                ENV_URL = "stage.google.com"                    // task variable ( task varaibles will have higher priority than pipeline variable )
             }
             steps {
                 sh "echo Name of the variable is ${ENV_URL}"
