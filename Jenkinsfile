@@ -1,9 +1,15 @@
+//  Reference : jenkins.io/doc/book/pipeline/syntax/ 
+
 pipeline {
     agent any 
+    environment {
+        ENV_URL = "pipeline.google.com"
+    }
     stages {
         stage('Name of the stage - 1') {
             steps {
                 sh 'echo how are you doing'
+                sh "Name of the variable is ${ENV_URL}"
             }
         }
         stage('Name of the stage - 2') {
