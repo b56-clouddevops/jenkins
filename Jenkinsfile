@@ -3,7 +3,7 @@
 pipeline {
     agent any 
     environment {
-        ENV_URL = "pipeline.google.com"
+        ENV_URL = "pipeline.google.com"                         // Pipeline variables ( Global )
     }
     stages {
         stage('Name of the stage - 1') {
@@ -13,7 +13,11 @@ pipeline {
             }
         }
         stage('Name of the stage - 2') {
+            environment {
+                ENV_URL = "stage.google.com"                    // task variable
+            }
             steps {
+                sh "echo Name of the variable is ${ENV_URL}"
                 sh "echo step1"
                 sh "echo step2"
                 sh "echo step3"
