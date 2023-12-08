@@ -10,6 +10,7 @@ pipeline {
             steps {
                 sh 'echo how are you doing'
                 sh "echo Name of the variable is ${ENV_URL}"
+                sh "env"
             }
         }
         stage('Name of the stage - 2') {
