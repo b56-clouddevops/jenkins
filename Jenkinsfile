@@ -66,6 +66,7 @@ pipeline {
                 sh "echo step1"
                 sh "echo step2"
                 sh "echo step3"
+                }
             }
         }
     }
