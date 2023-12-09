@@ -30,23 +30,24 @@ pipeline {
             }
         }
         stage('Demo On Parallel Stages') {
-        parallel {
-            stage('Download-1') {
-                steps {
-                    sh "echo Download In Progress"
-                    sh "sleep 120"
+            parallel {
+                stage('Download-1') {
+                    steps {
+                        sh "echo Download In Progress"
+                        sh "sleep 120"
+                    }
                 }
-            }
-            stage('Download-2') {
-                steps {
-                    sh "echo Download In Progress"
-                    sh "sleep 120"
+                stage('Download-2') {
+                    steps {
+                        sh "echo Download In Progress"
+                        sh "sleep 120"
+                    }
                 }
-            }
-            stage('Download-3') {
-                steps {
-                    sh "echo Download In Progress"
-                    sh "sleep 120"
+                stage('Download-3') {
+                    steps {
+                        sh "echo Download In Progress"
+                        sh "sleep 120"
+                    }
                 }
             }
         }
