@@ -27,7 +27,27 @@ pipeline {
                 sh "mvn --version"
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
-                sh "sleep 150"
+            }
+        }
+        stage('Demo On Parallel Stages') {
+        parallel {
+            stage('Download-1') {
+                steps {
+                    sh "echo Download In Progress"
+                    sh "sleep 120"
+                }
+            }
+            stage('Download-2') {
+                steps {
+                    sh "echo Download In Progress"
+                    sh "sleep 120"
+                }
+            }
+            stage('Download-3') {
+                steps {
+                    sh "echo Download In Progress"
+                    sh "sleep 120"
+                }
             }
         }
         stage('Name of the stage - 2') {
