@@ -24,7 +24,7 @@ pipeline {
     stages {
         stage('Name of the stage - 1') {
             steps {
-                sh 'echo how are you doing'
+                sh "mvn"
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
                 sh "sleep 150"
