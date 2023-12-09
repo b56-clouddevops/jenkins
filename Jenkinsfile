@@ -13,7 +13,10 @@ pipeline {
         // choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
         // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    options { buildDiscarder(logRotator(numToKeepStr: '10')) } 
+    options { 
+        buildDiscarder(logRotator(numToKeepStr: '10')) 
+        timeout(time: 1, unit: 'MINUTES')
+        } 
 
     // triggers { cron('*/1 * * * *') }
     triggers { pollSCM('*/1 * * * *') }
@@ -24,6 +27,7 @@ pipeline {
                 sh 'echo how are you doing'
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
+                sh "sleep 150"
             }
         }
         stage('Name of the stage - 2') {
