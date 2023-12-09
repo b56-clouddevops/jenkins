@@ -1,7 +1,10 @@
 //  Reference : jenkins.io/doc/book/pipeline/syntax/ 
 
 pipeline {
-    agent any 
+    // agent any    : means run on any of the available node
+    agent {
+        label 'ws'
+    } 
     environment {
         ENV_URL = "pipeline.google.com"                         // Pipeline variables ( Global )
         SSH_CRED = credentials('SSH_CRED')
@@ -24,6 +27,7 @@ pipeline {
     stages {
         stage('Name of the stage - 1') {
             steps {
+                sh "hostname"
                 sh "mvn --version"
                 sh "echo Name of the variable is ${ENV_URL}"
                 sh "env"
