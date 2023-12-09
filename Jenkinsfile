@@ -15,7 +15,7 @@ pipeline {
     }
     options { 
         buildDiscarder(logRotator(numToKeepStr: '10')) 
-        timeout(time: 1, unit: 'MINUTES')
+        timeout(time: 59, unit: 'MINUTES')
         } 
 
     // triggers { cron('*/1 * * * *') }
