@@ -13,7 +13,7 @@ pipeline {
         // choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
         // password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    options { buildDiscarder(logRotator(numToKeepStr: '3')) } 
+    options { buildDiscarder(logRotator(numToKeepStr: '10')) } 
 
     // triggers { cron('*/1 * * * *') }
     triggers { pollSCM('*/1 * * * *') }
