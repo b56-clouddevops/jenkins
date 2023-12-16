@@ -6,10 +6,10 @@ node {
         stage('Runs On Tag Name') {
             print 'Runs on Tag'
         }
+    }
     else {
             stage('Runs On Branch') {
                 print 'Runs on Branch'
             } 
         }
-    }
-}
+   }
