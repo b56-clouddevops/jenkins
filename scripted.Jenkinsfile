@@ -8,7 +8,7 @@ node {
         }
     else {
             stage('Runs On Branch') {
-            p   rint 'Runs on Branch'
+                print 'Runs on Branch'
             } 
         }
     }
