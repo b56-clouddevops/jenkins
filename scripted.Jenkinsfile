@@ -1,3 +1,4 @@
+// Demo On Scripted Pipeline
 node {
     stage('Test') {
         print 'Hello World'
@@ -8,8 +9,8 @@ node {
         }
     }
     else {
-            stage('Runs On Branch') {
-                print 'Runs on Branch'
+        stage('Runs On Branch') {
+           print 'Runs on Branch'
             } 
         }
    }
