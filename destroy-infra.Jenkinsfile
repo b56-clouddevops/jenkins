@@ -7,7 +7,7 @@ pipeline {
         ansiColor('xterm')    // Add's color to the output : Ensure you install AnsiColor Plugin.
     }
     stages {
-        stage('Creating ALB') {
+        stage('Destroying ALB') {
             steps {
                    git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-loadbalancers.git'
                         sh "terrafile -f env-${ENV}/Terrafile"
@@ -16,7 +16,7 @@ pipeline {
                    }
                 }
 
-        stage('Creating Databases') {
+        stage('Destroying Databases') {
             steps {
                    git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
                         sh "terrafile -f env-${ENV}/Terrafile"
@@ -24,7 +24,7 @@ pipeline {
                         sh "terraform destroy -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
                    }
                 }
-        stage('Creating Network') {
+        stage('Destroying Network') {
             steps {
                 git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-vpc.git'
                         sh "terrafile -f env-${ENV}/Terrafile"
