@@ -8,16 +8,11 @@ pipeline {
     }
     stages {
         stage('Creating Network') {
-            steps {
-                git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-vpc.git'
-                        // sh "rm -rf .terraform"
-                        sh ''' 
-                            rm -rf .terraform
-                            terrafile -f env-${ENV}/Terrafile
-                            terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure
-                            terraform plan -var-file=env-${ENV}/${ENV}.tfvars
-                            terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve
-                        ''' 
+                 git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-vpc.git'
+                        sh "terrafile -f env-${ENV}/Terrafile"
+                        sh "terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars  -reconfigure"
+                        sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+                        sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
                 }
             }
 
