@@ -27,16 +27,17 @@ pipeline {
                    }
                 }
 
-        // stage('Creating Databases') {
-        //     steps {
-        //            git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
-        //                 sh "terrafile -f env-${ENV}/Terrafile"
+        stage('Creating Databases') {
+            steps {
+                   git branch: 'main', url: 'https://github.com/b56-clouddevops/terraform-databases.git'
+                        sh "rm -rf .terraform"
+                        sh "terrafile -f env-${ENV}/Terrafile"
 
-        //                 sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
-        //                 sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
-        //                 sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
-        //            }
-        //         }
+                        sh "terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure"
+                        sh "terraform plan -var-file=env-${ENV}/${ENV}.tfvars"
+                        sh "terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve"
+                   }
+                }
         stage('Backend') {
             parallel {
                 stage('Creating Catalogue') {
@@ -44,6 +45,7 @@ pipeline {
                         dir('catalogue') {   git branch: 'main', url: 'https://github.com/b56-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
