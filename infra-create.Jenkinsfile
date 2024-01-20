@@ -61,10 +61,11 @@ pipeline {
                             git branch: 'main', url: 'https://github.com/b56-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                                 ''' 
                             }
                         }
@@ -74,10 +75,11 @@ pipeline {
                         dir('user') {  git branch: 'main', url: 'https://github.com/b56-clouddevops/user.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                                 ''' 
                             }
                         }
@@ -87,10 +89,11 @@ pipeline {
                         dir('cart') { git branch: 'main', url: 'https://github.com/b56-clouddevops/cart.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                                 ''' 
                             }
                         }
@@ -100,10 +103,11 @@ pipeline {
                         dir('shipping') { git branch: 'main', url: 'https://github.com/b56-clouddevops/shipping.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                                 ''' 
                             }
                         }
@@ -113,10 +117,11 @@ pipeline {
                         dir('payment') { git branch: 'main', url: 'https://github.com/b56-clouddevops/payment.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                                 ''' 
                                 }
                             }
@@ -128,10 +133,11 @@ pipeline {
                         dir('frontend') {  git branch: 'main', url: 'https://github.com/b56-clouddevops/frontend.git'
                             sh ''' 
                                 cd mutable-infra
+                                rm -rf .terraform
                                 terrafile -f env-${ENV}/Terrafile
                                 terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100
-                                terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=100 -auto-approve
+                                terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0
+                                terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=6.0.0 -auto-approve
                             ''' 
                         }
                     }
