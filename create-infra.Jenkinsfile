@@ -60,6 +60,7 @@ pipeline {
                         dir('user') {  git branch: 'main', url: 'https://github.com/b56-clouddevops/user.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
@@ -73,6 +74,7 @@ pipeline {
                         dir('cart') { git branch: 'main', url: 'https://github.com/b56-clouddevops/cart.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
@@ -86,6 +88,7 @@ pipeline {
                         dir('shipping') { git branch: 'main', url: 'https://github.com/b56-clouddevops/shipping.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
@@ -99,6 +102,7 @@ pipeline {
                         dir('payment') { git branch: 'main', url: 'https://github.com/b56-clouddevops/payment.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
@@ -114,6 +118,7 @@ pipeline {
                         dir('frontend') { git branch: 'main', url: 'https://github.com/b56-clouddevops/frontend.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
