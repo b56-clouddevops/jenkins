@@ -60,7 +60,7 @@ pipeline {
                             git branch: 'main', url: 'https://github.com/b56-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
-                                    ls -ltr /tmp/terraform* || trye
+                                    ls -ltr /tmp/terraform* || true
                                     rm -rf /tmp/terraform* || true
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
