@@ -60,6 +60,8 @@ pipeline {
                             git branch: 'main', url: 'https://github.com/b56-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
+                                    ls -ltr /tmp/terraform372173335/1-local.tfstate
+                                    rm -rf /tmp/terraform372173335/1-local.tfstate || true
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
