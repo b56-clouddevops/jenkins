@@ -76,8 +76,8 @@ pipeline {
                                     rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.7
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.7 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.8
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.8 -auto-approve
                                 ''' 
                             }
                         }
