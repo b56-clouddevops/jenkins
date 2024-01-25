@@ -60,8 +60,6 @@ pipeline {
                             git branch: 'main', url: 'https://github.com/b56-clouddevops/catalogue.git'
                                 sh ''' 
                                     cd mutable-infra
-                                    ls -ltr /tmp/terraform* || true
-                                    rm -rf /tmp/terraform* || true
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
                                     terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
@@ -78,8 +76,8 @@ pipeline {
                                     rm -rf .terraform
                                     terrafile -f env-${ENV}/Terrafile
                                     terraform init --backend-config=env-${ENV}/${ENV}-backend.tfvars -reconfigure
-                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6
-                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.6 -auto-approve
+                                    terraform plan -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.7
+                                    terraform apply -var-file=env-${ENV}/${ENV}.tfvars -var APP_VERSION=0.0.7 -auto-approve
                                 ''' 
                             }
                         }
@@ -144,7 +142,7 @@ pipeline {
                 }
             }
         post {
-                always {
+            always {
                     cleanWs()
                 }
             }
